@@ -1,7 +1,5 @@
 package com.kym.springbootmicroservice0apigateway.request;
 
-
-import com.kym.springbootmicroservice0apigateway.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

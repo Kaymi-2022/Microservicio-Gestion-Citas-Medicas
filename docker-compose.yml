@@ -1,0 +1,25 @@
+services:
+  gestionar-usuarios:
+    build: spring-boot-microservice-1-gestionusuarios
+    mem_limit: 512m
+    ports:
+      - "3333:3333"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://BD_Citas:3306/DB_Citas?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQL8Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      APP_JWT_SECRET: RandomSecretKey123456789!RandomSecretKey123456789!RandomSecretKey123456789!
+      APP_JWT_EXPIRATION_IN_MS: 86400000
+      SERVICE_SECURITY_SECURE_KEY_USERNAME: kaymiKeySecureUsername
+      SERVICE_SECURITY_SECURE_KEY_PASSWORD: kaymiKeySecurePassword!
+      GESTIONUSUARIOS_SERVICE_URL: http://host.docker.internal:3333
+    restart: always
+    networks:
+      - red_cita_medica
+
+networks:
+  red_cita_medica:
+    external: true
